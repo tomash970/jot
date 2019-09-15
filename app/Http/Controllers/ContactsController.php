@@ -62,11 +62,19 @@ class ContactsController extends Controller
     private function validateData()
     {
     	return request()->validate([
-    		'name' => 'required',
+    		'name' => 'required | min:3',
     		'email' => 'required | email',
     		'birthday' => 'required',
     		'company' => 'required',
-    	]);
+    	],
+    	[
+	        'name.required' => 'Ime je potrebno',
+	        'name.min' => 'Ime mora imati minimum od 3 slova!',
+	        
+	    ]
+         );
     }
+
+   
 
 }
